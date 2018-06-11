@@ -13,5 +13,6 @@
 # 3:add spoof 5.55 for Mira Cfw 5.05 (tested 10/06/2018)
 
  NOTE : for used spoof launched Alazif on your pc
+ add your ip AlAsif in dns 1 and 2 on your config ps4
  then on ps4 launched mirahen and put the ps4 in rest mode! 
  reboot ps4 system spoofed 5.55
