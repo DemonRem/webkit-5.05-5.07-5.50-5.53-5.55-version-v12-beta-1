@@ -15,11 +15,28 @@ function resetPage() {
 }
 
 function getFirmwares() {
+  var firmwareSpoofs = {
+    "5.55": "4.55",
+    "5.55": "5.05",
+    "5.55": "5.07",
+    "6.00": "5.50",
+    "6.00": "5.55"
+  };
+  var ua = navigator.userAgent;
+  var currentFirmware = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+  if (firmwareSpoofs.hasOwnProperty(currentFirmware)) {
+    currentFirmware = firmwareSpoofs[currentFirmware];
+  }
+
   var firmwares = "";
   x = 0;
   for (var i = 0, len = data["firmwares"].length; i < len; i++) {
     x += 1;
-    firmwares += "<a href=\"#" + data["firmwares"][i] + "\"><button class=\"btn btn-main\">" + data["firmwares"][i] + "</button></a>";
+    if (currentFirmware == data["firmwares"][i]) {
+      firmwares += "<a href=\"#" + data["firmwares"][i] + "\"><button class=\"btn btn-main\">" + data["firmwares"][i] + "</button></a>";
+    } else {
+      firmwares += "<a href=\"#" + data["firmwares"][i] + "\"><button class=\"btn btn-disabled\">" + data["firmwares"][i] + "</button></a>";
+    }
     if (x >= 3) {
       firmwares += "<br>";
       x = 0;
